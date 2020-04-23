@@ -5,6 +5,8 @@
  */
 package cis421onlinecatalog;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +25,10 @@ public class CIS421OnlineCatalog extends Application {
         
         Scene scene = new Scene(root);
         
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        String connectionUrl = "jdbc:sqlserver://localhost:1433;" +  
+            "databaseName=onlineCatalog;integratedsecurity = true"; 
+        Connection con = DriverManager.getConnection(connectionUrl);  
         stage.setScene(scene);
         stage.show();
     }
