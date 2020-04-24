@@ -85,15 +85,23 @@ public class FXMLDocumentControllerAdmin implements Initializable {
     
     private void addRow()  {
         //TODO: allows user to add rows in the table and then save the changes to the database.
-        //CIS421OnlineCatalog add = new CIS421OnlineCatalog();
-        //add.insertProduct("000", "Name", "20", "Brand", "1", "Category");
+        CIS421OnlineCatalog add = new CIS421OnlineCatalog();
+        try {
+            add.insertProduct("000", "Name", "20", "Brand", "1", "Category");
+        } catch (Exception ex) {
+            Logger.getLogger(FXMLDocumentControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private void removeRow()  {
         //TODO: allows user to delete rows in the table and then save the changes to the database
-        //CIS421OnlineCatalog delete;
-        //delete = new CIS421OnlineCatalog();
-        //delete.deleteProcuct("000");
+        CIS421OnlineCatalog delete;
+        delete = new CIS421OnlineCatalog();
+        try {
+            delete.deleteProcuct("000");
+        } catch (Exception ex) {
+            Logger.getLogger(FXMLDocumentControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private void editRow() {

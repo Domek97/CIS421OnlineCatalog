@@ -48,24 +48,22 @@ public class CIS421OnlineCatalog extends Application {
     /**
      *
      */
-    public void insertUser(String EmailAddress, String Username, String Password, String CardNumber, String PaypalEmail, String PIN, String PaymentMethod) throws Exception
+    public void insertUser(String EmailAddress, String Username, String Password) throws Exception
     {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         String connectionUrl = "jdbc:sqlserver://localhost:1433;" +  
             "databaseName=onlineCatalog;integratedsecurity = true"; 
         Connection conn = DriverManager.getConnection(connectionUrl); 
         
-        String query = " insert into USERS (EmailAddress, Username, Password, CardNumber, PaypalEmail, PIN, PaymentMethod)"
+        String query = " insert into USERS (EmailAddress, Username, Password)"
                 + " values (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = conn.prepareStatement(query);
         
         stmt.setString(1, EmailAddress);
         stmt.setString(2, Username);
         stmt.setString(3, Password);
-        stmt.setString(4, CardNumber);
-        stmt.setString(5, PaypalEmail);
-        stmt.setString(6, PIN);
-        stmt.setString(7, PaymentMethod);
+        
+        stmt.executeQuery(query);
         
         conn.close();
     }
@@ -103,6 +101,8 @@ public class CIS421OnlineCatalog extends Application {
         stmt.setString(4, Brand);
         stmt.setString(5, Stock);
         stmt.setString(6, Category);
+        
+        
         
         conn.close();
     }

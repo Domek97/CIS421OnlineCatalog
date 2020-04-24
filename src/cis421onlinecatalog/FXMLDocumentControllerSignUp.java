@@ -59,6 +59,21 @@ public class FXMLDocumentControllerSignUp implements Initializable {
             passwordField.clear();
             confirmPasswordField.clear();
         }
+        
+        CIS421OnlineCatalog add = new CIS421OnlineCatalog();
+        try {
+            
+            add.insertUser(emailField.getText(), usernameField.getText(), passwordField.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(FXMLDocumentControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        CIS421OnlineCatalog address = new CIS421OnlineCatalog();
+        try {
+            address.insertAddress(emailField.getText(), streetField.getText(), cityField.getText(), (String) stateComboBox.getValue(), aptField.getText(),  zipField.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(FXMLDocumentControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     protected void cancelSignUp(ActionEvent event) {
