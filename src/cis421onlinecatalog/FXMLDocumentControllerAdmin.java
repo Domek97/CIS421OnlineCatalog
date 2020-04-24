@@ -64,7 +64,7 @@ public class FXMLDocumentControllerAdmin implements Initializable {
         
     }    
     private void initList() {
-        //TODO: pull data from the database from table PRODUCT to populate Set<Product> productSet
+        //TODO: pull data from the database from table PRODUCT to populate productList
         //I recommend saving each tuple from the database to a temporary Product object (see Product.java) and then using "productList.add(tempProduct);"
         
         //this filler data is just to show that the table works. it should be deleted after implementation

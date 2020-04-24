@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -31,6 +32,7 @@ public class FXMLDocumentControllerBrowse implements Initializable {
     @FXML private Button viewCartButton, addToCartButton, adminSettingsButton, logOutButton;
     ObservableList<Product> productList = FXCollections.observableArrayList();
     ObservableList<Product> categoryList = FXCollections.observableArrayList();
+    public boolean adminAccess = false;
     @FXML
     private void handleButtonAction(ActionEvent event) {
         if(event.getSource() == logOutButton) {
@@ -49,6 +51,7 @@ public class FXMLDocumentControllerBrowse implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("Current user: " + Context.getInstance().currentUser().username);
         initLists();
     
         nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty()); //setting the columns for the tableview
@@ -99,16 +102,27 @@ public class FXMLDocumentControllerBrowse implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentControllerBrowse.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //TODO: track currentUser while navigating
+        //TODO: track currentUser while navigating using Context
     }
 
     private void viewAdminSettings(ActionEvent event) {
         try {
-            Parent home_parent = FXMLLoader.load(getClass().getResource("FXMLDocumentAdmin.fxml"));
-            Scene home_scene = new Scene(home_parent);
-            Stage home_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            home_stage.setScene(home_scene);
-            home_stage.show();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocumentAdminDialog.fxml"));
+            Parent parent = fxmlLoader.load();
+            
+            Scene scene = new Scene(parent, 300, 200);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+            
+            if(adminAccess) {
+                Parent home_parent = FXMLLoader.load(getClass().getResource("FXMLDocumentAdmin.fxml"));
+                Scene home_scene = new Scene(home_parent);
+                Stage home_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                home_stage.setScene(home_scene);
+                home_stage.show();
+             }
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentControllerBrowse.class.getName()).log(Level.SEVERE, null, ex);
         }
