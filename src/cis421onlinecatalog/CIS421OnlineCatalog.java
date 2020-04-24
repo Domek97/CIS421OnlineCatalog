@@ -7,6 +7,8 @@ package cis421onlinecatalog;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +22,7 @@ import java.util.Calendar;
  * @author Dominic Santangelo
  */
 public class CIS421OnlineCatalog extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocumentLogin.fxml"));
@@ -32,6 +34,9 @@ public class CIS421OnlineCatalog extends Application {
         String connectionUrl = "jdbc:sqlserver://localhost:1433;" +  
             "databaseName=onlineCatalog;integratedsecurity = true"; 
         Connection conn = DriverManager.getConnection(connectionUrl);  
+        
+        
+
         stage.setScene(scene);
         stage.show();
         

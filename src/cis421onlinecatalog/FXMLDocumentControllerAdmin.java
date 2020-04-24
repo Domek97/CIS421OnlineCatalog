@@ -70,8 +70,8 @@ public class FXMLDocumentControllerAdmin implements Initializable {
         productTableView.setItems(productList);
         
     }    
-    private void initList() throws Exception {
-        //TODO: pull data from the database from table PRODUCT to populate Set<Product> productSet
+    private void initList() {
+        //TODO: pull data from the database from table PRODUCT to populate productList
         //I recommend saving each tuple from the database to a temporary Product object (see Product.java) and then using "productList.add(tempProduct);"
         
         
