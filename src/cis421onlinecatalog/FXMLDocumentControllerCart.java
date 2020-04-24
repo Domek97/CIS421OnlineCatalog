@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cis421onlinecatalog;
 
 import java.net.URL;
@@ -16,9 +11,9 @@ import javafx.scene.control.Label;
  *
  * @author Dominic Santangelo
  */
-public class FXMLDocumentController implements Initializable {
+public class FXMLDocumentControllerCart implements Initializable {
     
-    @FXML
+    @FXML   
     private Label label;
     
     @FXML

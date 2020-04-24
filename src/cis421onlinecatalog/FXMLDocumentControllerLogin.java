@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cis421onlinecatalog;
 
 import java.net.URL;
@@ -10,26 +5,41 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
  * @author Dominic Santangelo
  */
-public class FXMLDocumentController implements Initializable {
+public class FXMLDocumentControllerLogin implements Initializable {
     
-    @FXML
-    private Label label;
-    
+    @FXML private Label failedLoginLabel;
+    @FXML private TextField usernameField, passwordField;
+    @FXML private Button loginButton, signUpButton;
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        if (event.getSource() == loginButton) {
+            login(usernameField.getText(), passwordField.getText());
+        }
+        else if (event.getSource() == signUpButton) {
+            signUpScreen();
+        }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        failedLoginLabel.setVisible(false);
     }    
     
+    protected void login(String username, String password) {
+        usernameField.clear();
+        passwordField.clear();
+        //TODO: check if username/password match the database
+    }
+    
+    protected void signUpScreen() {
+        //TODO: swap to sign up screen
+    }
 }

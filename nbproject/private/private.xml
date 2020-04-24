@@ -3,9 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocumentSignUp.fxml</file>
+            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocumentControllerBrowse.java</file>
+            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocumentControllerLogin.java</file>
+            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocumentLogin.fxml</file>
             <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/CIS421OnlineCatalog.java</file>
-            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocument.fxml</file>
+            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocumentCart.fxml</file>
+            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocumentBrowse.fxml</file>
+            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocumentControllerCart.java</file>
+            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocumentControllerSignUp.java</file>
+            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocumentControllerAdmin.java</file>
+            <file>file:/C:/Users/Dominic%20Santangelo/Documents/NetBeansProjects/CIS421OnlineCatalog/src/cis421onlinecatalog/FXMLDocumentAdmin.fxml</file>
         </group>
     </open-files>
 </project-private>
