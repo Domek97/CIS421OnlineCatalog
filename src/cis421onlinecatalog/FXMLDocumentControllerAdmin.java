@@ -2,6 +2,9 @@ package cis421onlinecatalog;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +54,11 @@ public class FXMLDocumentControllerAdmin implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        initList();
+        try {
+            initList();
+        } catch (Exception ex) {
+            Logger.getLogger(FXMLDocumentControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty()); //setting the columns for the tableview
         brandCol.setCellValueFactory(cellData -> cellData.getValue().brandProperty());
@@ -63,21 +70,30 @@ public class FXMLDocumentControllerAdmin implements Initializable {
         productTableView.setItems(productList);
         
     }    
-    private void initList() {
+    private void initList() throws Exception {
         //TODO: pull data from the database from table PRODUCT to populate Set<Product> productSet
         //I recommend saving each tuple from the database to a temporary Product object (see Product.java) and then using "productList.add(tempProduct);"
+        
+        
         
         //this filler data is just to show that the table works. it should be deleted after implementation
         Product tempProduct = new Product("111111111111", "Straight-up Oil", "Suave", "Bath & Body", 5, 25 );
         productList.add(tempProduct);
+        
+        //conn.close();
     }
     
-    private void addRow() {
+    private void addRow()  {
         //TODO: allows user to add rows in the table and then save the changes to the database.
+        //CIS421OnlineCatalog add = new CIS421OnlineCatalog();
+        //add.insertProduct("000", "Name", "20", "Brand", "1", "Category");
     }
     
-    private void removeRow() {
+    private void removeRow()  {
         //TODO: allows user to delete rows in the table and then save the changes to the database
+        //CIS421OnlineCatalog delete;
+        //delete = new CIS421OnlineCatalog();
+        //delete.deleteProcuct("000");
     }
     
     private void editRow() {

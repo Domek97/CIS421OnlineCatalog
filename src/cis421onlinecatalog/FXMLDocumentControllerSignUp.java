@@ -2,6 +2,7 @@ package cis421onlinecatalog;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,13 +33,14 @@ public class FXMLDocumentControllerSignUp implements Initializable {
     @FXML PasswordField passwordField, confirmPasswordField;
     @FXML Button signUpButton, cancelButton;
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void handleButtonAction(ActionEvent event){
         if (event.getSource() == signUpButton) {
             signUp(emailField.getText(), usernameField.getText(), passwordField.getText(), confirmPasswordField.getText(), streetField.getText(), aptField.getText(), cityField.getText(), zipField.getText());
         }
         else if (event.getSource() == cancelButton) {
             cancelSignUp(event);
         }
+        
     }
     
     @Override
