@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="cis421onlinecatalog.FXMLDocumentControllerAdmin">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cis421onlinecatalog.FXMLDocumentControllerAdmin">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <TableView fx:id="productTableView" layoutX="9.0" layoutY="6.0" prefHeight="542.0" prefWidth="786.0">
@@ -38,21 +38,21 @@
          <children>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="New..." />
+                  <Button fx:id="newRowButton" mnemonicParsing="false" text="New..." />
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Button mnemonicParsing="false" text="Remove" />
+                  <Button fx:id="removeRowButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Remove" />
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <Button mnemonicParsing="false" text="Edit..." />
+                  <Button fx:id="editRowButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Edit..." />
                </children>
             </HBox>
          </children>
       </GridPane>
-      <Button layoutX="14.0" layoutY="661.0" mnemonicParsing="false" text="Quit" />
+      <Button fx:id="quitButton" layoutX="14.0" layoutY="661.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Quit" />
     </children>
 </AnchorPane>

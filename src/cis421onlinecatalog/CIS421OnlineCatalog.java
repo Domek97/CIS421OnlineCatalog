@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -21,10 +22,11 @@ public class CIS421OnlineCatalog extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocumentBrowse.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocumentLogin.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.setTitle("Optimum Merchant");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("optimummerchantlogo.png")));
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         String connectionUrl = "jdbc:sqlserver://localhost:1433;" +  
             "databaseName=onlineCatalog;integratedsecurity = true"; 

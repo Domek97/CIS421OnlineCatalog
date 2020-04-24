@@ -1,16 +1,24 @@
 package cis421onlinecatalog;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 /**
  *
@@ -37,7 +45,7 @@ public class FXMLDocumentControllerAdmin implements Initializable {
             editRow();
         }
         else if (event.getSource() == quitButton) {
-            quit();
+            quit(event);
         }
     }
     
@@ -47,9 +55,9 @@ public class FXMLDocumentControllerAdmin implements Initializable {
         
         nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty()); //setting the columns for the tableview
         brandCol.setCellValueFactory(cellData -> cellData.getValue().brandProperty());
-        upcCol.setCellValueFactory(cellData -> cellData.getValue().upcProperty()); //setting the columns for the tableview
+        upcCol.setCellValueFactory(cellData -> cellData.getValue().upcProperty());
         categoryCol.setCellValueFactory(cellData -> cellData.getValue().categoryProperty());
-        priceCol.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject()); //setting the columns for the tableview
+        priceCol.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject()); 
         stockCol.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asObject());
         
         productTableView.setItems(productList);
@@ -58,7 +66,8 @@ public class FXMLDocumentControllerAdmin implements Initializable {
     private void initList() {
         //TODO: pull data from the database from table PRODUCT to populate Set<Product> productSet
         //I recommend saving each tuple from the database to a temporary Product object (see Product.java) and then using "productList.add(tempProduct);"
-        //this filler data is just to show that the table works
+        
+        //this filler data is just to show that the table works. it should be deleted after implementation
         Product tempProduct = new Product("111111111111", "Straight-up Oil", "Suave", "Bath & Body", 5, 25 );
         productList.add(tempProduct);
     }
@@ -75,7 +84,15 @@ public class FXMLDocumentControllerAdmin implements Initializable {
         //TODO: allows user to edit rows in the table and then save them to the database
     }
     
-    private void quit() {
-        //TODO: take the user back to the browse page
+    private void quit(ActionEvent event) {
+        try {
+            Parent home_parent = FXMLLoader.load(getClass().getResource("FXMLDocumentBrowse.fxml"));
+            Scene home_scene = new Scene(home_parent);
+            Stage home_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            home_stage.setScene(home_scene);
+            home_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

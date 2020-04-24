@@ -22,8 +22,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="125.0" layoutY="728.0" mnemonicParsing="false" text="Admin Settings" />
-      <Button layoutX="28.0" layoutY="728.0" mnemonicParsing="false" text="Log Out" />
+      <Button fx:id="adminSettingsButton" layoutX="125.0" layoutY="728.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Admin Settings" />
+      <Button fx:id="logOutButton" layoutX="28.0" layoutY="728.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Log Out" />
       <VBox layoutX="248.0" layoutY="43.0" prefHeight="658.0" prefWidth="644.0">
          <children>
             <TableView fx:id="productTableView" prefHeight="542.0" prefWidth="485.0">
@@ -62,12 +62,13 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
-                        <Button mnemonicParsing="false" text="Add To Cart" />
+                        <Button fx:id="addToCartButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Add To Cart" />
                      </children>
                   </HBox>
                </children>
             </GridPane>
          </children>
       </VBox>
+      <Button fx:id="viewCartButton" layoutX="28.0" layoutY="676.0" mnemonicParsing="false" onAction="#handleButtonAction" text="My Cart" />
    </children>
 </AnchorPane>

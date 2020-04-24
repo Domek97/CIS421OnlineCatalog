@@ -1,15 +1,23 @@
 package cis421onlinecatalog;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  *
@@ -29,7 +37,7 @@ public class FXMLDocumentControllerSignUp implements Initializable {
             signUp(emailField.getText(), usernameField.getText(), passwordField.getText(), confirmPasswordField.getText(), streetField.getText(), aptField.getText(), cityField.getText(), zipField.getText());
         }
         else if (event.getSource() == cancelButton) {
-            cancelSignUp();
+            cancelSignUp(event);
         }
     }
     
@@ -51,7 +59,15 @@ public class FXMLDocumentControllerSignUp implements Initializable {
         }
     }
     
-    protected void cancelSignUp() {
-        //TODO: Take the user back to login screen
+    protected void cancelSignUp(ActionEvent event) {
+        try {
+            Parent home_parent = FXMLLoader.load(getClass().getResource("FXMLDocumentLogin.fxml"));
+            Scene home_scene = new Scene(home_parent);
+            Stage home_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            home_stage.setScene(home_scene);
+            home_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentControllerSignUp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

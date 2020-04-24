@@ -1,14 +1,23 @@
 package cis421onlinecatalog;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 /**
  *
@@ -19,11 +28,23 @@ public class FXMLDocumentControllerBrowse implements Initializable {
     @FXML protected TableView productTableView, categoryTableView;
     @FXML private TableColumn<Product, String> nameCol, brandCol, upcCol, categoryCol;
     @FXML private TableColumn<Product, Integer> priceCol, stockCol;
+    @FXML private Button viewCartButton, addToCartButton, adminSettingsButton, logOutButton;
     ObservableList<Product> productList = FXCollections.observableArrayList();
     ObservableList<Product> categoryList = FXCollections.observableArrayList();
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
+        if(event.getSource() == logOutButton) {
+            logOut(event);
+        }
+        else if(event.getSource() == adminSettingsButton) {
+            viewAdminSettings(event);
+        }
+        else if(event.getSource() == addToCartButton) {
+            addToCart();
+        }
+        else if(event.getSource() == viewCartButton) {
+            viewCart(event);
+        }
     }
     
     @Override
@@ -48,6 +69,48 @@ public class FXMLDocumentControllerBrowse implements Initializable {
         productList.add(tempProduct);
         if (!categoryTableView.getItems().contains(tempProduct.categoryProperty())) { //this is to ensure the same category doesn't show up twice
             categoryList.add(tempProduct);
+        }
+    }
+
+    private void viewCart(ActionEvent event) {
+        try {
+            Parent home_parent = FXMLLoader.load(getClass().getResource("FXMLDocumentCart.fxml"));
+            Scene home_scene = new Scene(home_parent);
+            Stage home_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            home_stage.setScene(home_scene);
+            home_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentControllerBrowse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //TODO: Track currentUser as they navigate
+    }
+
+    private void addToCart() {
+        //TODO: Add product selection to user's cart and save it to the database
+    }
+
+    private void logOut(ActionEvent event) {
+        try {
+            Parent home_parent = FXMLLoader.load(getClass().getResource("FXMLDocumentLogin.fxml"));
+            Scene home_scene = new Scene(home_parent);
+            Stage home_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            home_stage.setScene(home_scene);
+            home_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentControllerBrowse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //TODO: track currentUser while navigating
+    }
+
+    private void viewAdminSettings(ActionEvent event) {
+        try {
+            Parent home_parent = FXMLLoader.load(getClass().getResource("FXMLDocumentAdmin.fxml"));
+            Scene home_scene = new Scene(home_parent);
+            Stage home_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            home_stage.setScene(home_scene);
+            home_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentControllerBrowse.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
